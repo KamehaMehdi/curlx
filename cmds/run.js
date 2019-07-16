@@ -18,12 +18,22 @@ module.exports = (args, db) => {
     let collectionRequest = request_id.split(':');
     collectionName = collectionRequest[0];
 
-    if (!db.getCollection(collectionName)) {
-      return outputCollectionNotExists();
-    }
-    let req_id = collectionRequest[1];
-    req = db.getRequestFromCollection(collectionName, req_id);
-  }
+        if (!db.getCollection(collectionName)) {
+            return outputCollectionNotExists();
+        }
+        if(collectionRequest[1] === 'all'){
+          db.getCollections()[collectionName].map(async request => {
+            req = await db.getRequestFromCollection(collectionName, request.id);
+            if (req) {
+              await require('./curlx')(args, req.command, db);
+              await console.log('                                               ')
+              await console.log('===============================================')
+              await console.log('                                               ')
+            } else {
+              await outputRun404(collectionName);
+            }
+          })
+
 
   if(+req.length){
       req.filter(request => request_id.split(':')[1] === request.name)
@@ -38,4 +48,5 @@ module.exports = (args, db) => {
   } else {
     outputRun404(collectionName);
   }
+
 }

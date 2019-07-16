@@ -74,6 +74,11 @@ cx run <collection_name:request_id|request_name>
 ```
 Runs the request with id `request_id` or with name `request_name` present inside collection `collection_name`
 
+```
+cx run <collection_name:all>
+```
+Runs all the request in `collection_name`
+
 
 ![](assets/small-clear.png)
 
