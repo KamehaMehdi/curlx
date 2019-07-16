@@ -70,9 +70,9 @@ cx run <request_id>
 Runs the request with id `request_id` present in history again
 
 ```
-cx run <collection_name:request_id>
+cx run <collection_name:request_id|request_name>
 ```
-Runs the request with id `request_id` present inside collection `collection_name`
+Runs the request with id `request_id` or with name `request_name` present inside collection `collection_name`
 
 ```
 cx run <collection_name:all>

@@ -69,6 +69,7 @@ class Database {
   }
 
   addRequestToCollection(collectionName, requestObject) {
+    requestObject.name = requestObject.name.replace(/ /gi, '_')
     return db.get('collections')
       .get(collectionName)
       .push(requestObject)
@@ -82,10 +83,11 @@ class Database {
   }
 
   getRequestFromCollection(collectionName, id) {
-    return db.get('collections')
+    const value = db.get('collections').get(collectionName).find({ id: id }).value()
+    return value ? value : db.get('collections')
       .get(collectionName)
-      .find({ id: id })
       .value()
+      .filter(request => request.name === id)
   }
 
   removeRequestFromHistory(id) {
