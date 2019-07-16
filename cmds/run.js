@@ -48,5 +48,3 @@ module.exports = (args, db) => {
   } else {
     outputRun404(collectionName);
   }
-
-}
