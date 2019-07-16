@@ -69,6 +69,7 @@ class Database {
   }
 
   addRequestToCollection(collectionName, requestObject) {
+    requestObject.name = requestObject.name.replace(/ /gi, '_')
     return db.get('collections')
       .get(collectionName)
       .push(requestObject)
