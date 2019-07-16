@@ -1,6 +1,6 @@
 ![](assets/intro-banner.png)
 
-`curlx` is a simple command line HTTP client that keeps track of request history, helps you organize your requests into collections, run and test frequent calls faster and more. 
+`curlx` is a simple command line HTTP client that keeps track of request history, helps you organize your requests into collections, run and test frequent calls faster and more.
 
 ![](assets/small-clear.png)
 
@@ -41,7 +41,7 @@ Displays an iterable list of created collections. Collections are a group of req
 ```
 cx new collection
 ```
-Walks you through a prompt for creating a new collection. 
+Walks you through a prompt for creating a new collection.
 ```
 cx new request
 ```
@@ -70,9 +70,9 @@ cx run <request_id>
 Runs the request with id `request_id` present in history again
 
 ```
-cx run <collection_name:request_id>
+cx run <collection_name:request_id|request_name>
 ```
-Runs the request with id `request_id` present inside collection `collection_name`
+Runs the request with id `request_id` or with name `request_name` present inside collection `collection_name`
 
 
 ![](assets/small-clear.png)
@@ -110,7 +110,7 @@ Connection: keep-alive
 ### Sharing
 
 All your collections and history are stored locally in your machine. Navigate to `cxdb` in your root folder.
-Example: 
+Example:
 ```
 $ cd ~/cxdb
 
@@ -141,7 +141,7 @@ $ cat collections.json
   }
 }
 ```
-In this example, There are two collections `Test` and `mycoolapp` with 1 request each. To run, say, the `users` request in `mycoolapp`, 
+In this example, There are two collections `Test` and `mycoolapp` with 1 request each. To run, say, the `users` request in `mycoolapp`,
 ```
 $ cx run mycoolapp:KvUx9H9t6
 
