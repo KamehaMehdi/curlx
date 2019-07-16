@@ -25,8 +25,16 @@ module.exports = (args, db) => {
     req = db.getRequestFromCollection(collectionName, req_id);
   }
 
-  if (req) {
-    require('./curlx')(args, req.command, db);
+  if(+req.length){
+      req.filter(request => request_id.split(':')[1] === request.name)
+        .map(async request => {
+          await require('./curlx')(args, request.command, db)
+          await console.log('                                               ')
+          await console.log('===============================================')
+          await console.log('                                               ')
+      })
+  } else if (+req) {
+      require('./curlx')(args, req.command, db);
   } else {
     outputRun404(collectionName);
   }

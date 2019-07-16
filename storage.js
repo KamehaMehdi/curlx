@@ -82,10 +82,11 @@ class Database {
   }
 
   getRequestFromCollection(collectionName, id) {
-    return db.get('collections')
+    const value = db.get('collections').get(collectionName).find({ id: id }).value()
+    return value ? value : db.get('collections')
       .get(collectionName)
-      .find({ id: id })
       .value()
+      .filter(request => request.name === id)
   }
 
   removeRequestFromHistory(id) {
